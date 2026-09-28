@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tracker</title>
+    <link rel="stylesheet" href="./s_tracker.css">
+</head>
+<body> 
+    <h1>Student Tracker</h1>
+     <ul id="studentList"></ul>
+    
+
+
+
+
+
+
+    <script>
+      const studentList = document.getElementById('studentList')
+
+
+
+        const students = [
+        { name: "Amina", score: 45 },
+        { name: "Tunde", score: 82 },
+        { name: "Chidi", score: 60 },
+        { name: "Ngozi", score: 38 },
+        { name: 'David', score: 60 }
+    
+    ]
+
+    students.forEach((student)=>{
+        const li = document.createElement('li')
+        li.innerText = `${student.name} -- ${student.score} Points`
+        studentList.append(li)
+
+
+        if(student.score >= 50){
+            li.style.color = 'green'
+        } else
+            { student.score <= 49
+                li.style.color = 'red'
+            }
+        
+    })
+     
+    
+
+    </script>
+</body>
+</html>

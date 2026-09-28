@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display: flex; flex-direction: column; justify-content: center; align-self: center; height: 50vh; width: 50%;">
+
+    <h1>Classes of Food and Example</h1>
+
+    <ul id="foodList"></ul>
+    
+
+
+
+
+    <script>
+   const foods = [
+    {foodClass: 'Carbhydrate', Example: 'Yam'},
+    {foodClass: 'Protein', Example: 'Chicken'},
+    {foodClass: 'Fats', Example: 'Avocado'},
+    {foodClass: 'Vitamins', Example: 'Vegetables'},
+    {foodClass: 'Minerals', Example: 'Salt'},
+    {foodClass: 'Water', Example: 'Water'}
+
+   ]
+    const foodList = document.getElementById('foodList')
+
+    foods.forEach((food)=>{
+        const li = document.createElement('li')
+        li.innerText = `${food.foodClass} -- Example : ${food.Example}`
+        foodList.append(li)
+
+    })
+
+
+
+    </script>
+</body>
+</html>
