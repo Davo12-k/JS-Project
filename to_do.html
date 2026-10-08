@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./to_do.css">
+</head>
+<body>
+    <h1>To-Do App</h1>
+    <div class="container">
+
+     <input id="inputTask" type="" placeholder="Enter Task">
+      <button id="addTodo">addBtn</button>
+      
+    <ol id="displayTodo">
+
+    </ol>
+
+
+    </div>
+      
+    
+
+
+    <script>
+     let todos =[]
+
+    
+     const displayTodo = document.getElementById('displayTodo')
+     const addTodo = document.getElementById('addTodo')
+     const input = document.getElementById('inputTask')
+
+
+
+
+    const listTodos =() =>{
+        displayTodo.innerHTML = ''
+        todos.forEach ((todo)=>{
+        const li = document.createElement('li')
+        li.innerText = `${todo.text}`
+        displayTodo.append(li)
+        })
+    }
+
+
+
+     addTodo.addEventListener('click', ()=>{
+         if(input.value.trim()=== '' )
+         return 
+       
+
+        const newTodo = {
+            id:Date.now(),
+            text:input.value.trim()
+        }
+
+       todos  = [...todos,newTodo]
+        input.value = ''
+
+       listTodos()
+     })
+
+
+
+     const deleteTBtn = document.createElement('button')
+       deleteTBtn.innerText = 'delete'
+       deleteTBtn.addEventListener('click',()=>{
+        todos.splice(1)
+       })
+       listTodos()
+
+
+
+
+
+
+    </script>
+</body>
+</html>

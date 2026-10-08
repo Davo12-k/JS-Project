@@ -1,52 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Tracker</title>
-    <link rel="stylesheet" href="./s_tracker.css">
-</head>
-<body> 
+    <link rel="stylesheet" href="./s_tracker.css" />
+  </head>
+  <body>
     <h1>Student Tracker</h1>
-     <ul id="studentList"></ul>
-    
+    <ul id="studentList"></ul>
 
+    <div>
+      <input id="addName" type="text" placeholder="Enter student's name" />
+      <input id="addScore" type="text" placeholder="Enter student's score" />
 
-
-
-
+      <button id="addBtn">Add Student</button>
+    </div>
 
     <script>
-      const studentList = document.getElementById('studentList')
+      const studentList = document.getElementById("studentList");
+      const addName = document.getElementById("addName");
+      const addScore = document.getElementById("addScore");
+      const addBtn = document.getElementById("addBtn");
 
-
-
-        const students = [
+      const students = [
         { name: "Amina", score: 45 },
         { name: "Tunde", score: 82 },
         { name: "Chidi", score: 60 },
         { name: "Ngozi", score: 38 },
-        { name: 'David', score: 60 }
-    
-    ]
+        { name: "David", score: 60 },
+      ];
 
-    students.forEach((student)=>{
-        const li = document.createElement('li')
-        li.innerText = `${student.name} -- ${student.score} Points`
-        studentList.append(li)
+      const displayAll = (arrayUseable) => {
+        studentList.innerHTML = " ";
+        arrayUseable.forEach((x) => {
+          const li = document.createElement("li");
+          li.innerText = `${x.name} -- ${x.score} Points`;
+          studentList.append(li);
+          li.style.color = x.score >= 50 ? "green" : "red";
+        });
+      };
 
 
-        if(student.score >= 50){
-            li.style.color = 'green'
-        } else
-            { student.score <= 49
-                li.style.color = 'red'
-            }
-        
-    })
-     
-    
+      displayAll(students)
+
+      const addNewStudent = (studentName, StudentScore) => {
+        studentName = addName.value;
+        StudentScore = Number(addScore.value);
+
+        const newStudent = {
+          name: studentName,
+          score: StudentScore,
+        };
+
+        // console.log(newStudent);
+        students.push(newStudent);
+        displayAll(students)
+       
+      };
+
+      addBtn.addEventListener("click", () => {
+       addNewStudent()
+       displayAll(students)
+      });
+      
+      //add to stay, the update should be working too, delete button for all students
+
+
 
     </script>
-</body>
+  </body>
 </html>
